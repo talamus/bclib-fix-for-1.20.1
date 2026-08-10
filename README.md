@@ -1,5 +1,15 @@
 [![](https://jitpack.io/v/quiqueck/BCLib.svg)](https://jitpack.io/#quiqueck/BCLib)
 
+# About this fork
+
+This is a fork of <https://github.com/OffsetMonkey538/BCLib/> that is a fork of <https://github.com/quiqueck/BCLib/>.
+
+With modded Minecraft 1.20.1 there is a bug in BCLib [that takes world loading to take extremely long.](https://github.com/quiqueck/BCLib/issues/146)
+
+This fork re-builds the patch OffsetMonkey538 created, and stores it as a release, so it survives over 90 days.
+
+---
+
 # BCLib
 
 BCLib is a library mod for BetterX team mods, developed for Fabric, MC 1.19
@@ -11,7 +21,7 @@ You can easily include BCLib into your own mod by adding the following to your `
 ```
 repositories {
     ...
-    maven { url 'https://jitpack.io' } 
+    maven { url 'https://jitpack.io' }
 }
 ```
 

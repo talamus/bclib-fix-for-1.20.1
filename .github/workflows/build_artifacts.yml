@@ -3,8 +3,11 @@ name: Build artifacts
 on:
   push:
     branches:
-      - "*"
+      - "1.20"
+  workflow_dispatch:
 
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -30,3 +33,35 @@ jobs:
         with:
           name: Artifacts
           path: build/libs/
+
+      - name: Read mod version
+        id: version
+        run: |
+          echo "mod_version=$(grep '^mod_version=' gradle.properties | cut -d= -f2)" >> "$GITHUB_OUTPUT"
+          echo "minecraft_version=$(grep '^minecraft_version=' gradle.properties | cut -d= -f2)" >> "$GITHUB_OUTPUT"
+
+      - name: Publish rolling release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: 1.20-latest
+          MOD_VERSION: ${{ steps.version.outputs.mod_version }}
+          MC_VERSION: ${{ steps.version.outputs.minecraft_version }}
+        run: |
+          # Replace the previous rolling release so the tag always points at the newest build.
+          gh release delete "$TAG" --cleanup-tag --yes || true
+
+          cat > release_notes.md <<EOF
+          Unofficial build of BCLib for Minecraft $MC_VERSION.
+
+          This is a personal fork, **not** an official BCLib or hotpatch release.
+          Built from branch \`1.20\` at commit ${GITHUB_SHA}.
+
+          Download \`bclib-${MOD_VERSION}.jar\` and drop it into your \`mods\` folder.
+          EOF
+
+          gh release create "$TAG" \
+            --target "$GITHUB_SHA" \
+            --title "bclib $MOD_VERSION (unofficial, MC $MC_VERSION)" \
+            --notes-file release_notes.md \
+            --latest \
+            build/libs/*.jar

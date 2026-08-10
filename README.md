@@ -1,6 +1,6 @@
 [![](https://jitpack.io/v/quiqueck/BCLib.svg)](https://jitpack.io/#quiqueck/BCLib)
 
-# About this fork
+# About this fork!
 
 This is a fork of <https://github.com/OffsetMonkey538/BCLib/> that is a fork of <https://github.com/quiqueck/BCLib/>.
 

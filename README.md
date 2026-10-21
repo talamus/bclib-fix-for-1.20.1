@@ -1,10 +1,10 @@
 [![](https://jitpack.io/v/quiqueck/BCLib.svg)](https://jitpack.io/#quiqueck/BCLib)
 
-# About this fork!
+# PLEASE DO NOT USE THIS ANYMORE, THE BUG HAS BEEN FIXED!
 
-This is a fork of <https://github.com/OffsetMonkey538/BCLib/> that is a fork of <https://github.com/quiqueck/BCLib/>.
+This was a fork of <https://github.com/OffsetMonkey538/BCLib/> that was a fork of <https://github.com/quiqueck/BCLib/>.
 
-With modded Minecraft 1.20.1 there is a bug in BCLib [that takes world loading to take extremely long.](https://github.com/quiqueck/BCLib/issues/146)
+With modded Minecraft 1.20.1 there was a bug in BCLib [that made world loading to take extremely long.](https://github.com/quiqueck/BCLib/issues/146)
 
 This fork re-builds the patch OffsetMonkey538 created, and stores it as a release, so it survives over 90 days.
 
@@ -154,3 +154,4 @@ In this example `2.0.6` is the BCLIb Version you are building against.
 * Clone repo
 * Run command line in folder: gradlew build
 * Mod .jar will be in ./build/libs
+
